@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { onAuthStateChanged } from 'firebase/auth'
 import { doc, getDoc } from 'firebase/firestore'
 import { auth, db } from '@/lib/firebase'
+import { Login } from '@/components/Login'
 import { Sidebar } from '@/components/Sidebar'
 import { TopBar } from '@/components/TopBar'
 import { Dashboard } from '@/components/Dashboard'
@@ -15,11 +16,9 @@ function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Real-time authentication state listener
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         try {
-          // Fetch user data from Firestore
           const userDoc = await getDoc(doc(db, 'users', firebaseUser.uid))
           
           if (userDoc.exists()) {
@@ -32,16 +31,21 @@ function App() {
               createdAt: userData.createdAt,
             } as UserType)
           } else {
-            // User document doesn't exist, create basic profile
             setCurrentUser({
               uid: firebaseUser.uid,
               email: firebaseUser.email || '',
-              displayName: firebaseUser.email?.split('@')[0] || 'User',
+              displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0] || 'User',
               role: 'engineer',
             } as UserType)
           }
         } catch (error) {
           console.error('Error fetching user data:', error)
+          setCurrentUser({
+            uid: firebaseUser.uid,
+            email: firebaseUser.email || '',
+            displayName: firebaseUser.displayName || 'User',
+            role: 'engineer',
+          } as UserType)
         }
       } else {
         setCurrentUser(null)
@@ -60,12 +64,8 @@ function App() {
     )
   }
 
-  // For now, allow access without authentication (add login later in Phase 7)
-  const mockUser = currentUser || {
-    uid: 'demo-user',
-    email: 'demo@mepflow.com',
-    displayName: 'Demo User',
-    role: 'engineer' as const,
+  if (!currentUser) {
+    return <Login />
   }
 
   return (
@@ -73,9 +73,9 @@ function App() {
       <div className="flex h-screen bg-background">
         <Sidebar 
           user={{
-            name: mockUser.displayName,
-            email: mockUser.email,
-            role: mockUser.role,
+            name: currentUser.displayName,
+            email: currentUser.email,
+            role: currentUser.role,
           }} 
         />
         
@@ -87,9 +87,9 @@ function App() {
           
           <main className="flex-1 overflow-y-auto p-6">
             <Routes>
-              <Route path="/" element={<Dashboard userId={mockUser.uid} />} />
-              <Route path="/projects" element={<Projects userId={mockUser.uid} />} />
-              <Route path="/calculations" element={<Calculations userId={mockUser.uid} />} />
+              <Route path="/" element={<Dashboard userId={currentUser.uid} />} />
+              <Route path="/projects" element={<Projects userId={currentUser.uid} />} />
+              <Route path="/calculations" element={<Calculations userId={currentUser.uid} />} />
               <Route path="/files" element={<div className="text-foreground">Files Page (Coming in Phase 6)</div>} />
               <Route path="/settings" element={<div className="text-foreground">Settings Page (Coming in Phase 7)</div>} />
               <Route path="*" element={<Navigate to="/" replace />} />
