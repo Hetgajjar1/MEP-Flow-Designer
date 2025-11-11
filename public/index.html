@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEP Flow Designer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">MEP Flow Designer</h1>
+            <nav class="nav">
+                <div id="auth-container">
+                    <div id="login-section">
+                        <button id="login-btn" class="btn btn-primary">Login</button>
+                        <button id="signup-btn" class="btn btn-secondary">Sign Up</button>
+                    </div>
+                    <div id="user-section" style="display: none;">
+                        <span id="user-email" class="user-info"></span>
+                        <button id="logout-btn" class="btn btn-secondary">Logout</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Login/Signup Modal -->
+            <div id="auth-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="auth-title">Login</h2>
+                    <form id="auth-form">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" required>
+                        </div>
+                        <div class="form-group" id="name-group" style="display: none;">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name">
+                        </div>
+                        <div class="form-group" id="role-group" style="display: none;">
+                            <label for="role">Role:</label>
+                            <select id="role">
+                                <option value="designer">MEP Designer</option>
+                                <option value="engineer">Engineer</option>
+                                <option value="reviewer">Reviewer</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" id="auth-submit" class="btn btn-primary">Login</button>
+                    </form>
+                    <p class="auth-switch">
+                        <span id="auth-switch-text">Don't have an account?</span>
+                        <a href="#" id="auth-switch-link">Sign up</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Dashboard -->
+            <div id="dashboard" style="display: none;">
+                <section class="hero">
+                    <h2>Welcome to MEP Flow Designer</h2>
+                    <p>Design, calculate, and optimize your mechanical, electrical, and plumbing systems</p>
+                </section>
+
+                <section class="projects-section">
+                    <div class="section-header">
+                        <h3>Your Projects</h3>
+                        <button id="new-project-btn" class="btn btn-primary">New Project</button>
+                    </div>
+                    <div id="project-stats" class="project-stats"></div>
+                    <div id="projects-grid" class="projects-grid">
+                        <!-- Projects will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Admin Panel (visible only to admin users) -->
+                <section id="admin-panel" style="display:none; margin-top:1.5rem;">
+                    <div class="section-header">
+                        <h3>Admin Panel</h3>
+                    </div>
+                    <p>Manage user roles.</p>
+                    <div id="admin-users-container" class="card">
+                        <button id="refresh-users-btn" class="btn btn-secondary">Refresh Users</button>
+                        <div id="users-list" style="margin-top:0.75rem; font-size:0.9rem; display:grid; gap:0.5rem;"></div>
+                    </div>
+                    <div id="user-role-form" class="card" style="margin-top:1rem;">
+                        <div class="form-row">
+                            <input type="text" id="target-uid" placeholder="User UID" style="max-width:320px;" />
+                            <select id="target-role">
+                                <option value="designer">Designer</option>
+                                <option value="engineer">Engineer</option>
+                                <option value="reviewer">Reviewer</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                            <button id="set-role-btn" class="btn btn-primary">Set Role</button>
+                            <span id="admin-action-msg" style="margin-left:0.5rem;"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- New Project Modal -->
+                <div id="project-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Create New Project</h2>
+                        <form id="project-form">
+                            <div class="form-group">
+                                <label for="project-name">Project Name:</label>
+                                <input type="text" id="project-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="project-type">MEP System Type:</label>
+                                <select id="project-type" required>
+                                    <option value="">Select System Type</option>
+                                    <option value="hvac">HVAC (Heating, Ventilation, Air Conditioning)</option>
+                                    <option value="electrical">Electrical Systems</option>
+                                    <option value="plumbing">Plumbing & Water Systems</option>
+                                    <option value="fire">Fire Protection Systems</option>
+                                    <option value="integrated">Integrated MEP</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="project-description">Description:</label>
+                                <textarea id="project-description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="building-type">Building Type:</label>
+                                <select id="building-type">
+                                    <option value="">Select Building Type</option>
+                                    <option value="commercial">Commercial</option>
+                                    <option value="residential">Residential</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="institutional">Institutional</option>
+                                    <option value="mixed">Mixed Use</option>
+                                </select>
+                            </div>
+                            <!-- Phase 2 additional metadata -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="project-location">Location (City/Region):</label>
+                                    <input type="text" id="project-location" placeholder="e.g., Dallas, TX">
+                                </div>
+                                <div class="form-group">
+                                    <label for="project-area">Area (sq ft):</label>
+                                    <input type="number" id="project-area" min="0" step="1" placeholder="e.g., 25000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="project-floors">Floors:</label>
+                                    <input type="number" id="project-floors" min="1" step="1" value="1">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create Project</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welcome Section for Non-Authenticated Users -->
+            <div id="welcome-section">
+                <section class="hero">
+                    <h2>Professional MEP Design & Calculation Platform</h2>
+                    <p>Streamline your mechanical, electrical, and plumbing design workflow with powerful calculation tools and collaborative features.</p>
+                    <div class="hero-actions">
+                        <button id="get-started-btn" class="btn btn-large btn-primary">Get Started</button>
+                        <button id="learn-more-btn" class="btn btn-large btn-secondary">Learn More</button>
+                    </div>
+                </section>
+
+                <section class="features">
+                    <h3>Key Features</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <h4>🏗️ HVAC Design</h4>
+                            <p>Calculate load requirements, ductwork sizing, and energy efficiency</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>⚡ Electrical Systems</h4>
+                            <p>Power distribution, circuit analysis, and safety compliance</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🚿 Plumbing Design</h4>
+                            <p>Water flow calculations, pipe sizing, and pressure analysis</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🔥 Fire Protection</h4>
+                            <p>Sprinkler system design and fire safety calculations</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>📁 File Management</h4>
+                            <p>Upload and manage DWG, PDF, and calculation files</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>👥 Collaboration</h4>
+                            <p>Team review, approval workflows, and project sharing</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MEP Flow Designer. Professional engineering tools for modern construction.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/file-upload.js"></script>
+    <script type="module" src="js/projects.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

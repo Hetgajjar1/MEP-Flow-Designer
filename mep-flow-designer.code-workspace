@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "liveServer.settings.port": 3000,
+    "liveServer.settings.root": "/public"
+  },
+  "extensions": {
+    "recommendations": [
+      "firebase.vscode-firestore-for-vscode",
+      "esbenp.prettier-vscode",
+      "ritwickdey.liveserver"
+    ]
+  }
+}

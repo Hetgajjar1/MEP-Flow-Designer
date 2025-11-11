@@ -1,0 +1,53 @@
+rules_version='2'
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function userRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function tokenRole() {
+      return request.auth != null ? request.auth.token.role : null;
+    }
+
+    function isAdmin() {
+      return request.auth != null && (tokenRole() == 'admin' || userRole() == 'admin');
+    }
+
+    // Users collection - users can access their own profile; admins can read all
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      allow create, update: if request.auth != null && request.auth.uid == userId;
+      allow delete: if isAdmin();
+    }
+
+    // Projects collection with owner/admin controls
+    match /projects/{projectId} {
+      allow read: if request.auth != null; // all authenticated users can view projects
+
+      // Create: creator must match auth.uid
+      allow create: if request.auth != null && request.resource.data.createdBy == request.auth.uid;
+
+      // Update/Delete: owner or admin
+      allow update, delete: if request.auth != null && (
+        resource.data.createdBy == request.auth.uid || isAdmin()
+      );
+    }
+
+    // Calculations subcollection - only engineers/admin/owner can write, all authed can read
+    match /projects/{projectId}/calculations/{calcId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && (
+        get(/databases/$(database)/documents/projects/$(projectId)).data.createdBy == request.auth.uid ||
+        userRole() in ['engineer', 'admin'] || tokenRole() in ['engineer', 'admin']
+      );
+    }
+
+    // Activity logs - read own entries
+    match /activity/{activityId} {
+      allow read: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow create: if false; // written by Cloud Functions only
+    }
+  }
+}

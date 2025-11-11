@@ -1,0 +1,21 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Project files: only authenticated users, restrict deletion to owner or admin (requires Firestore lookup in prod)
+    match /projects/{projectId}/files/{fileName} {
+      function tokenRole() { return request.auth != null ? request.auth.token.role : null; }
+      function isOwner() { return request.auth != null &&
+        get(/databases/$(database)/documents/projects/$(projectId)).data.createdBy == request.auth.uid; }
+      function isAdmin() { return request.auth != null && tokenRole() == 'admin'; }
+
+      // Reads allowed to authenticated users for now (optional: restrict to owner/admin)
+      allow read: if request.auth != null;
+      // Writes (upload, update, delete) restricted to project owner or admin
+      allow write: if isOwner() || isAdmin();
+    }
+    // Default deny for everything else
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

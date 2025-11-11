@@ -1,0 +1,51 @@
+{
+  "name": "mep-flow-designer",
+  "version": "1.0.0",
+  "description": "Professional MEP (Mechanical, Electrical, Plumbing) design and calculation platform built with Firebase",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "firebase emulators:start --only auth",
+    "start:full": "firebase emulators:start",
+    "serve": "firebase serve --only hosting",
+    "deploy": "firebase deploy",
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:hosting": "firebase deploy --only hosting",
+    "build": "echo 'No build step required for vanilla JS'",
+    "lint": "cd functions && npm run lint",
+    "test": "echo 'Tests not implemented yet'",
+    "dev": "concurrently \"firebase emulators:start --only auth,hosting\" \"live-server public --port=3000\"",
+    "dev:full": "firebase emulators:start",
+    "setup": "cd functions && npm install",
+    "setup:functions": "cd functions && npm install",
+    "clean": "rm -rf functions/node_modules && rm -rf node_modules",
+    "install:all": "npm install && cd functions && npm install"
+  },
+  "keywords": [
+    "MEP",
+    "HVAC",
+    "electrical",
+    "plumbing",
+    "engineering",
+    "design",
+    "calculations",
+    "Firebase",
+    "construction"
+  ],
+  "author": "MEP Engineering Team",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/mep-flow-designer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/mep-flow-designer/issues"
+  },
+  "homepage": "https://github.com/your-org/mep-flow-designer#readme"
+}

@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "firebase.vscode-firestore-for-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "christian-kohler.npm-intellisense",
+    "ms-vscode.vscode-json",
+    "ms-vscode.live-server",
+    "ritwickdey.liveserver"
+  ]
+}
