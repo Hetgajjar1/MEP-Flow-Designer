@@ -60,6 +60,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 ### ✅ Tasks:
 
 #### 1. Firebase Project Setup
+
 - [ ] Go to Firebase Console → create project `flowforge-mep-designer` ✅ DONE
 - [ ] Enable Firestore ✅ DONE
 - [ ] Enable Authentication (Email/Password + Google) ✅ DONE (Email/Password)
@@ -71,6 +72,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Blocker:** Cloud Functions require Blaze (paid) plan upgrade
 
 #### 2. Local Dev Environment
+
 - [ ] Install VS Code ✅ DONE
 - [ ] Install Node.js v20+ ✅ DONE (v20.19.5)
 - [ ] Install npm ✅ DONE (v10.8.2)
@@ -81,6 +83,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Status:** 100% Complete
 
 #### 3. Git + Version Control
+
 - [ ] Create GitHub repo ✅ DONE (Hetgajjar1/MEP-Flow-Designer)
 - [ ] Set up `.gitignore` ✅ DONE
 - [ ] Initialize local repo & push ✅ DONE (3 commits)
@@ -89,6 +92,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Status:** 75% Complete
 
 #### 4. Project Structure
+
 - [ ] Create folder structure (src/frontend, src/backend, src/models) ✅ DONE
 - [ ] Document folder purpose (README) ⏳ TODO
 - [ ] Create `docs/` folder for architecture ✅ DONE
@@ -96,6 +100,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Status:** 75% Complete
 
 #### 5. Confirm Everything Works
+
 - [ ] Run dev server ✅ DONE (http://localhost:5173/)
 - [ ] Test Firebase connection ✅ DONE
 - [ ] Test Authentication (Login component) ✅ DONE
@@ -104,6 +109,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Status:** 100% Complete
 
 ### 📍 Phase 0 Checkpoint:
+
 - ✅ Firebase project created and connected
 - ✅ Local environment stable (Node, npm, Firebase CLI)
 - ✅ Git repo initialized with 3 commits
@@ -123,6 +129,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 ### 📋 Tasks:
 
 #### 1. Design Firestore Data Model
+
 ```json
 {
   "projects/{projectId}": {
@@ -166,6 +173,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 3-4 hours
 
 #### 2. Implement Firestore CRUD
+
 - [ ] Create project → Firestore
 - [ ] Read project list → UI
 - [ ] Update project fields
@@ -176,6 +184,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 days
 
 #### 3. Test User Authentication
+
 - [ ] Email/Password auth ✅ DONE
 - [ ] Google Sign-In (optional)
 - [ ] Assign roles (Designer, Reviewer, Admin)
@@ -185,6 +194,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1 day
 
 #### 4. Integrate Firebase Storage
+
 - [ ] Upload DWG/PDF files
 - [ ] Retrieve download URL
 - [ ] Save file metadata in Firestore
@@ -194,6 +204,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 days
 
 ### 📍 Phase 1 Checkpoint:
+
 - ✅ Firestore schema defined and documented
 - ✅ CRUD operations fully functional
 - ✅ Auth with role-based access
@@ -213,6 +224,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 ### 📋 Tasks:
 
 #### 1. Set up Electron + React
+
 - [ ] Create Electron main process
 - [ ] Link with React front-end
 - [ ] Create menu (File, Edit, View, Help)
@@ -224,6 +236,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 2-3 days
 
 #### 2. Link Firebase
+
 - [ ] Load project list from Firestore
 - [ ] Display in sidebar
 - [ ] Upload DWG file → Firebase Storage
@@ -234,6 +247,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 days
 
 #### 3. Add DWG Reader (MVP)
+
 - [ ] Integrate `ezdxf` (Python backend) or use web-based library
 - [ ] Extract 2D geometry (lines, arcs, circles)
 - [ ] Parse layer data
@@ -243,6 +257,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 2-3 days
 
 ### 📍 Phase 2 Checkpoint:
+
 - ✅ Desktop app can open and display projects
 - ✅ 2D file preview working
 - ✅ File upload/download integrated
@@ -261,6 +276,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 ### 📋 Tasks:
 
 #### 1. Plumbing Calculations ✅ DONE (Basic)
+
 - ✅ Pipe sizing formula (Hunter's Curve)
 - ✅ Pressure drop calculation
 - ✅ Water demand per fixture
@@ -271,6 +287,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 days (remaining)
 
 #### 2. HVAC Calculations ✅ DONE (Basic)
+
 - ✅ Duct sizing (equal friction method)
 - ✅ Airflow balance
 - [ ] Cooling load estimation (full ASHRAE)
@@ -281,6 +298,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 2-3 days (remaining)
 
 #### 3. Electrical Calculations ✅ DONE (Basic)
+
 - ✅ Load estimation (wattage + diversity)
 - ✅ Cable sizing (ampacity)
 - ✅ Voltage drop check
@@ -291,6 +309,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 days (remaining)
 
 #### 4. Fire Protection (Sprinkler) Calculations ✅ DONE (Basic)
+
 - ✅ Sprinkler head spacing
 - ✅ Standpipe sizing
 - ✅ Pump sizing
@@ -300,6 +319,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1 day (remaining)
 
 #### 5. Data Integration
+
 - [ ] Store results in Firestore
 - [ ] Create result summary table (React)
 - [ ] Add export to CSV/Excel
@@ -309,6 +329,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 days
 
 ### 📍 Phase 3 Checkpoint:
+
 - ✅ All 4 MEP domains have working calculations
 - ✅ Results saved to Firestore
 - ✅ UI shows results clearly
@@ -327,6 +348,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 ### 📋 Tasks:
 
 #### 1. Generate Reports
+
 - [ ] Create PDF report template (Node.js + pdfkit)
 - [ ] Create Excel report template (xlsx)
 - [ ] Populate with calculation results
@@ -337,6 +359,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 2-3 days
 
 #### 2. Cloud Function Automation
+
 - [ ] Trigger report generation on project update
 - [ ] Send email notification with report link
 - [ ] Auto-archive old reports
@@ -346,6 +369,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 days
 
 #### 3. Compliance Validation (Optional)
+
 - [ ] Check against IPC/NEC/ASHRAE limits
 - [ ] Highlight warnings/errors in UI
 - [ ] Generate compliance report section
@@ -354,6 +378,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 2-3 days
 
 ### 📍 Phase 4 Checkpoint:
+
 - ✅ Professional PDF/Excel reports generated
 - ✅ Automated email delivery
 - ✅ Compliance checks performed
@@ -372,6 +397,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 ### 📋 Tasks:
 
 #### 1. AI Auto-Recognition
+
 - [ ] Train/integrate Cloud Vision API model
 - [ ] Detect MEP symbols (pipes, ducts, wires) in 2D drawings
 - [ ] Auto-tag elements with type/size
@@ -381,6 +407,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 2-3 weeks
 
 #### 2. Real-time Collaboration
+
 - [ ] Firestore real-time sync for live editing
 - [ ] Multi-user project editing
 - [ ] Comment/annotation system
@@ -390,6 +417,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 weeks
 
 #### 3. Cloud Run Upgrade
+
 - [ ] Migrate heavy computation to Cloud Run
 - [ ] Trigger from Firebase Functions
 - [ ] Scale based on workload
@@ -399,6 +427,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1 week
 
 #### 4. Analytics Dashboard
+
 - [ ] Web dashboard (React + Firestore)
 - [ ] User activity tracking
 - [ ] Design trends (common pipe sizes, etc.)
@@ -408,6 +437,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 weeks
 
 ### 📍 Phase 5 Checkpoint:
+
 - ✅ AI model provides accurate element detection
 - ✅ Collaboration system fully tested
 - ✅ Heavy tasks offloaded to cloud
@@ -426,6 +456,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 ### 📋 Tasks:
 
 #### 1. CI/CD Pipeline ✅ PARTIALLY DONE
+
 - ✅ GitHub Actions workflow created
 - ✅ Auto-build on push/PR
 - [ ] Auto-run tests
@@ -437,6 +468,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 days
 
 #### 2. Testing & QA
+
 - [ ] Unit tests for calculations
 - [ ] Integration tests for Firebase operations
 - [ ] End-to-end testing (UI automation)
@@ -447,6 +479,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 3-4 days
 
 #### 3. User Testing
+
 - [ ] Recruit 3-5 real MEP engineers
 - [ ] Conduct testing sessions
 - [ ] Gather feedback & bug reports
@@ -456,6 +489,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 1-2 weeks
 
 #### 4. Documentation & Release
+
 - [ ] Update README with setup instructions
 - [ ] Create user guide (PDF/video)
 - [ ] Create admin guide
@@ -466,6 +500,7 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Effort:** 2-3 days
 
 ### 📍 Phase 6 Checkpoint:
+
 - ✅ App passes all automated tests
 - ✅ User testing completed with positive feedback
 - ✅ No critical bugs
@@ -477,15 +512,15 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 
 ## 📈 Metrics & Success Criteria
 
-| Phase | Metric | Target |
-|-------|--------|--------|
-| **0** | Firebase + Local Setup | ✅ 100% Done |
-| **1** | Data Model Complete | 50 fields documented |
-| **2** | DWG Preview Working | <2 sec load time |
-| **3** | Calculation Accuracy | ±5% of manual calc |
-| **4** | Report Generation | <30 sec per report |
-| **5** | AI Detection Accuracy | >85% precision |
-| **6** | User Adoption | 10+ active users |
+| Phase | Metric                 | Target               |
+| ----- | ---------------------- | -------------------- |
+| **0** | Firebase + Local Setup | ✅ 100% Done         |
+| **1** | Data Model Complete    | 50 fields documented |
+| **2** | DWG Preview Working    | <2 sec load time     |
+| **3** | Calculation Accuracy   | ±5% of manual calc   |
+| **4** | Report Generation      | <30 sec per report   |
+| **5** | AI Detection Accuracy  | >85% precision       |
+| **6** | User Adoption          | 10+ active users     |
 
 ---
 
@@ -495,9 +530,11 @@ TOTAL ESTIMATED: 15-22 weeks (~4-5 months)
 **Overall Progress:** 2/42 tasks complete  
 **Team:** 1 developer (you)  
 **Blockers:**
+
 - [ ] Firebase Blaze plan upgrade (required for Cloud Functions)
 
 **Next Actions (Priority Order):**
+
 1. Commit dark theme + Login auth updates to GitHub
 2. Upgrade Firebase to Blaze plan
 3. Begin Phase 1: Firestore CRUD implementation

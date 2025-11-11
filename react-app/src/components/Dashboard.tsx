@@ -69,8 +69,9 @@ export function Dashboard({ userId }: DashboardProps) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <div className="text-foreground-muted">Loading dashboard...</div>
+      <div className="flex flex-col items-center justify-center h-full">
+        <div className="h-12 w-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin mb-4" />
+        <div className="text-foreground-muted font-medium">Loading dashboard...</div>
       </div>
     )
   }
@@ -78,101 +79,118 @@ export function Dashboard({ userId }: DashboardProps) {
   return (
     <div className="space-y-6">
       {/* Stats Cards */}
-      <div className="grid gap-4 md:grid-cols-3">
-        <Card>
+      <div className="grid gap-6 md:grid-cols-3">
+        <Card className="border-border/50 bg-gradient-to-br from-background-card to-background hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-foreground-muted">
-              TOTAL PROJECTS
+            <CardTitle className="text-xs font-bold text-foreground-muted uppercase tracking-wider">
+              Total Projects
             </CardTitle>
-            <FolderKanban className="h-4 w-4 text-foreground-muted" />
+            <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+              <FolderKanban className="h-5 w-5 text-primary" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-foreground">{stats.totalProjects}</div>
-            <p className="text-xs text-foreground-muted mt-1">
+            <div className="text-4xl font-black text-foreground bg-gradient-to-r from-foreground to-foreground-muted bg-clip-text">{stats.totalProjects}</div>
+            <p className="text-xs text-accent-green mt-2 font-semibold flex items-center gap-1">
+              <TrendingUp className="h-3 w-3" />
               +{Math.max(0, stats.totalProjects - (stats.totalProjects - 1))} from last month
             </p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-border/50 bg-gradient-to-br from-background-card to-background hover:shadow-xl hover:border-accent-green/30 transition-all duration-300 group">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-foreground-muted">
-              ACTIVE PROJECTS
+            <CardTitle className="text-xs font-bold text-foreground-muted uppercase tracking-wider">
+              Active Projects
             </CardTitle>
-            <Activity className="h-4 w-4 text-accent-green" />
+            <div className="h-10 w-10 rounded-lg bg-accent-green/10 flex items-center justify-center group-hover:bg-accent-green/20 transition-colors">
+              <Activity className="h-5 w-5 text-accent-green" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-foreground">{stats.activeProjects}</div>
-            <p className="text-xs text-foreground-muted mt-1">Currently in progress</p>
+            <div className="text-4xl font-black text-foreground">{stats.activeProjects}</div>
+            <p className="text-xs text-foreground-muted mt-2 font-medium">Currently in progress</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-border/50 bg-gradient-to-br from-background-card to-background hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-foreground-muted">
-              AVG. PROGRESS
+            <CardTitle className="text-xs font-bold text-foreground-muted uppercase tracking-wider">
+              Avg. Progress
             </CardTitle>
-            <TrendingUp className="h-4 w-4 text-primary" />
+            <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+              <TrendingUp className="h-5 w-5 text-primary" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-foreground">{stats.averageProgress}%</div>
-            <p className="text-xs text-foreground-muted mt-1">Across all projects</p>
+            <div className="text-4xl font-black text-foreground">{stats.averageProgress}%</div>
+            <p className="text-xs text-foreground-muted mt-2 font-medium">Across all projects</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Recent Projects */}
-      <Card>
-        <CardHeader>
+      <Card className="border-border/50 shadow-lg">
+        <CardHeader className="bg-gradient-to-r from-background-card to-background border-b border-border/50">
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-foreground">RECENT PROJECTS</CardTitle>
-              <CardDescription>Your latest MEP engineering projects</CardDescription>
+              <CardTitle className="text-lg font-bold text-foreground">Recent Projects</CardTitle>
+              <CardDescription className="text-foreground-muted font-medium">Your latest MEP engineering projects</CardDescription>
             </div>
-            <Button variant="primary" size="sm">
+            <Button className="bg-gradient-to-r from-primary to-primary-hover shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-200">
               <Plus className="mr-2 h-4 w-4" />
               New Project
             </Button>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           {recentProjects.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-foreground-muted mb-4">No projects yet</p>
-              <Button variant="primary">
+            <div className="text-center py-16 px-4">
+              <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <FolderKanban className="h-8 w-8 text-primary" />
+              </div>
+              <p className="text-foreground-muted mb-6 font-medium text-lg">No projects yet</p>
+              <Button className="bg-gradient-to-r from-primary to-primary-hover shadow-lg shadow-primary/30">
                 <Plus className="mr-2 h-4 w-4" />
                 Create Your First Project
               </Button>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3">
               {recentProjects.map((project) => (
                 <div
                   key={project.id}
-                  className="flex items-center justify-between p-4 rounded-lg border border-border bg-background-card hover:bg-background-hover transition-colors cursor-pointer"
+                  className="group flex items-center justify-between p-5 rounded-xl border border-border/50 bg-gradient-to-r from-background-card to-background hover:border-primary/30 hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-semibold text-foreground">{project.name}</h3>
-                      <Badge variant={project.status === 'active' ? 'active' : project.status === 'on-hold' ? 'on-hold' : 'completed'}>
-                        {project.status}
+                      <h3 className="font-bold text-foreground text-base group-hover:text-primary transition-colors">{project.name}</h3>
+                      <Badge 
+                        variant={project.status === 'active' ? 'active' : project.status === 'on-hold' ? 'on-hold' : 'completed'}
+                        className="px-3 py-1 text-xs font-semibold"
+                      >
+                        {project.status.toUpperCase()}
                       </Badge>
                     </div>
-                    <p className="text-sm text-foreground-muted">{project.description || `${project.type} system design for ${project.buildingType}`}</p>
-                    <div className="flex items-center gap-4 mt-2 text-xs text-foreground-muted">
-                      <span>{project.location}</span>
+                    <p className="text-sm text-foreground-muted font-medium mb-2">{project.description || `${project.type} system design for ${project.buildingType}`}</p>
+                    <div className="flex items-center gap-4 text-xs text-foreground-muted font-medium">
+                      <span className="flex items-center gap-1">
+                        📍 {project.location}
+                      </span>
                       <span>•</span>
-                      <span>{project.area.toLocaleString()} sq ft</span>
+                      <span className="flex items-center gap-1">
+                        📐 {project.area.toLocaleString()} sq ft
+                      </span>
                       <span>•</span>
-                      <span>Updated {new Date(project.updatedAt.seconds * 1000).toLocaleDateString()}</span>
+                      <span>🕒 {new Date(project.updatedAt.seconds * 1000).toLocaleDateString()}</span>
                     </div>
                   </div>
-                  <div className="ml-6 w-48">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs text-foreground-muted">Progress</span>
-                      <span className="text-xs font-semibold text-foreground">{project.progress}%</span>
+                  <div className="ml-6 w-52">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs text-foreground-muted font-semibold uppercase tracking-wide">Progress</span>
+                      <span className="text-sm font-black text-foreground">{project.progress}%</span>
                     </div>
-                    <Progress value={project.progress} />
+                    <Progress value={project.progress} className="h-2" />
                   </div>
                 </div>
               ))}

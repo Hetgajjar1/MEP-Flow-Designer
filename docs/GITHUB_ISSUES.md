@@ -1,6 +1,7 @@
 # GitHub Issues — MEP Flow Designer Product Roadmap
 
 **How to Use This File:**
+
 1. Copy each issue template
 2. Go to GitHub → MEP-Flow-Designer → Issues → New Issue
 3. Paste the content and adjust as needed
@@ -11,6 +12,7 @@
 ## 🏷️ Phase 0: FOUNDATION
 
 ### Issue: Phase 0 Epic — Foundation & Setup
+
 ```
 Title: [EPIC] Phase 0: Foundation — Setup + Validation
 
@@ -19,7 +21,7 @@ This is the umbrella issue for Phase 0 (Foundation). All Phase 0 tasks should be
 
 **Goal:** Make sure all tools, structure, and accounts are ready before building anything.
 
-**Expected Duration:** 1-2 weeks  
+**Expected Duration:** 1-2 weeks
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
@@ -44,6 +46,7 @@ Assignee: @Hetgajjar1
 ```
 
 ### Issue: Phase 0 Task 1 — Firebase Project Setup
+
 ```
 Title: [Phase 0] Task 1: Firebase Project Setup
 
@@ -59,7 +62,7 @@ Set up Firebase project with all required services and test environment.
 - [ ] Set up test environment with emulators
 - [ ] Document project ID and settings in README
 
-**Expected Duration:** 2-3 hours  
+**Expected Duration:** 2-3 hours
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
@@ -77,6 +80,7 @@ Assignee: @Hetgajjar1
 ```
 
 ### Issue: Phase 0 Task 2 — Local Dev Environment
+
 ```
 Title: [Phase 0] Task 2: Local Dev Environment Setup
 
@@ -92,7 +96,7 @@ Set up all tools needed for local development.
 - [ ] Initialize Firebase in project
 - [ ] Document environment setup in DEVELOPMENT.md
 
-**Expected Duration:** 1 hour  
+**Expected Duration:** 1 hour
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
@@ -110,6 +114,7 @@ Assignee: @Hetgajjar1
 ```
 
 ### Issue: Phase 0 Task 3 — Git Repository & Version Control
+
 ```
 Title: [Phase 0] Task 3: Git Repository & Version Control Setup
 
@@ -125,7 +130,7 @@ Initialize Git repository and establish branching/collaboration workflow.
 - [ ] First commit: project structure
 - [ ] Document Git workflow in DEVELOPMENT.md
 
-**Expected Duration:** 1-2 hours  
+**Expected Duration:** 1-2 hours
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
@@ -143,6 +148,7 @@ Assignee: @Hetgajjar1
 ```
 
 ### Issue: Phase 0 Task 4 — Project Folder Structure
+
 ```
 Title: [Phase 0] Task 4: Create Project Folder Structure
 
@@ -151,26 +157,28 @@ Organize project folders for frontend, backend, and models.
 
 **Expected Structure:**
 ```
+
 mep-flow-designer/
-├── react-app/              # Frontend (React + TypeScript)
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── lib/            # Utilities and configs
-│   │   ├── types/          # TypeScript types
-│   │   └── App.tsx
-│   └── package.json
-├── functions/              # Backend (Cloud Functions)
-│   ├── src/
-│   ├── index.js
-│   └── package.json
-├── docs/                   # Documentation
-│   ├── ARCHITECTURE.md
-│   ├── ROADMAP.md
-│   └── guides/
-│       ├── FIREBASE_SETUP.md
-│       └── DEVELOPMENT.md
-├── firebase.json           # Firebase config
+├── react-app/ # Frontend (React + TypeScript)
+│ ├── src/
+│ │ ├── components/ # React components
+│ │ ├── lib/ # Utilities and configs
+│ │ ├── types/ # TypeScript types
+│ │ └── App.tsx
+│ └── package.json
+├── functions/ # Backend (Cloud Functions)
+│ ├── src/
+│ ├── index.js
+│ └── package.json
+├── docs/ # Documentation
+│ ├── ARCHITECTURE.md
+│ ├── ROADMAP.md
+│ └── guides/
+│ ├── FIREBASE_SETUP.md
+│ └── DEVELOPMENT.md
+├── firebase.json # Firebase config
 └── README.md
+
 ```
 
 **Tasks:**
@@ -179,7 +187,7 @@ mep-flow-designer/
 - [ ] Document folder purposes
 - [ ] Create sample files (index.js, App.tsx)
 
-**Expected Duration:** 1 hour  
+**Expected Duration:** 1 hour
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
@@ -195,6 +203,7 @@ Assignee: @Hetgajjar1
 ```
 
 ### Issue: Phase 0 Task 5 — Confirm Everything Works
+
 ```
 Title: [Phase 0] Task 5: Integration Test & Confirmation
 
@@ -210,7 +219,7 @@ End-to-end test to confirm all Phase 0 tools work together.
 - [ ] All team members test their setup
 - [ ] Document any issues in GitHub Issues
 
-**Expected Duration:** 2 hours  
+**Expected Duration:** 2 hours
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
@@ -232,6 +241,7 @@ Assignee: @Hetgajjar1
 ## 🏷️ Phase 1: CORE BACKEND MODEL
 
 ### Issue: Phase 1 Epic — Core Backend Model
+
 ```
 Title: [EPIC] Phase 1: Core Backend Model — Project Data Setup
 
@@ -240,7 +250,7 @@ This is the umbrella issue for Phase 1 (Core Backend Model). All Phase 1 tasks s
 
 **Goal:** Build a reliable structure for storing projects, drawings, and MEP parameters using Firestore.
 
-**Expected Duration:** 2-3 weeks  
+**Expected Duration:** 2-3 weeks
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
@@ -263,7 +273,8 @@ Assignee: @Hetgajjar1
 ```
 
 ### Issue: Phase 1 Task 1 — Design Firestore Data Model
-```
+
+````
 Title: [Phase 1] Task 1: Design Firestore Data Model
 
 Description:
@@ -297,9 +308,10 @@ calculations/{calcId}
 ├── results (calculation outputs)
 ├── createdAt
 └── createdBy (uid)
-```
+````
 
 **Tasks:**
+
 - [ ] Document schema in docs/ARCHITECTURE.md
 - [ ] Create Firestore Security Rules
 - [ ] Design indexes (for common queries)
@@ -309,27 +321,32 @@ calculations/{calcId}
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
+
 - ✅ Schema documented and reviewed
 - ✅ Security rules prevent unauthorized access
 - ✅ Indexes optimize common queries
 - ✅ Sample data created in Firestore
 
 **Related:**
+
 - Parent Epic: #7 (Phase 1 Epic)
 - Architecture: docs/ARCHITECTURE.md
 
 Labels: phase-1, firestore, schema, design
 Assignee: @Hetgajjar1
+
 ```
 
 ### Issue: Phase 1 Task 2 — Implement Firestore CRUD
 ```
+
 Title: [Phase 1] Task 2: Implement Firestore CRUD Operations
 
 Description:
 Create, Read, Update, Delete operations for projects in Firestore.
 
 **Tasks:**
+
 - [ ] Create project endpoint (backend function)
 - [ ] Read project list endpoint
 - [ ] Read single project endpoint
@@ -343,6 +360,7 @@ Create, Read, Update, Delete operations for projects in Firestore.
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
+
 - ✅ All CRUD operations work without errors
 - ✅ Input validation prevents bad data
 - ✅ Error messages are clear and actionable
@@ -350,6 +368,7 @@ Create, Read, Update, Delete operations for projects in Firestore.
 - ✅ No security vulnerabilities
 
 **Example API:**
+
 ```
 POST   /projects              # Create
 GET    /projects              # List
@@ -359,20 +378,24 @@ DELETE /projects/:id          # Delete
 ```
 
 **Related:**
+
 - Parent Epic: #7 (Phase 1 Epic)
 
 Labels: phase-1, backend, crud, api
 Assignee: @Hetgajjar1
+
 ```
 
 ### Issue: Phase 1 Task 3 — User Authentication & Roles
 ```
+
 Title: [Phase 1] Task 3: User Authentication & Role-Based Access
 
 Description:
 Set up Firebase Authentication with role-based access control (RBAC).
 
 **Tasks:**
+
 - [ ] Test Firebase Email/Password auth
 - [ ] Add Google Sign-In (optional)
 - [ ] Create user profile in Firestore on signup
@@ -385,6 +408,7 @@ Set up Firebase Authentication with role-based access control (RBAC).
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
+
 - ✅ Sign up creates user in Firebase Auth + Firestore
 - ✅ Login works with email/password
 - ✅ Roles assigned correctly
@@ -393,25 +417,30 @@ Set up Firebase Authentication with role-based access control (RBAC).
 - ✅ User can only access their own data (by default)
 
 **Roles:**
+
 - **Engineer:** Create, read, update own projects
 - **Reviewer:** Read, comment on projects
 - **Admin:** Full access to all projects and users
 
 **Related:**
+
 - Parent Epic: #7 (Phase 1 Epic)
 
 Labels: phase-1, auth, security, rbac
 Assignee: @Hetgajjar1
+
 ```
 
 ### Issue: Phase 1 Task 4 — Firebase Storage Integration
 ```
+
 Title: [Phase 1] Task 4: Firebase Storage Integration (File Upload/Download)
 
 Description:
 Implement file upload to Firebase Storage and track metadata in Firestore.
 
 **Tasks:**
+
 - [ ] Create upload endpoint (DWG, PDF, images)
 - [ ] Store file in Firebase Storage
 - [ ] Save file metadata in Firestore
@@ -425,6 +454,7 @@ Implement file upload to Firebase Storage and track metadata in Firestore.
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
+
 - ✅ Files upload without errors
 - ✅ Metadata saved to Firestore
 - ✅ Download links work
@@ -433,6 +463,7 @@ Implement file upload to Firebase Storage and track metadata in Firestore.
 - ✅ Deletion removes both file and metadata
 
 **File Metadata Schema:**
+
 ```json
 {
   "fileName": "Floor_Plan_L1.dwg",
@@ -446,10 +477,12 @@ Implement file upload to Firebase Storage and track metadata in Firestore.
 ```
 
 **Related:**
+
 - Parent Epic: #7 (Phase 1 Epic)
 
 Labels: phase-1, storage, file-upload, backend
 Assignee: @Hetgajjar1
+
 ```
 
 ---
@@ -458,6 +491,7 @@ Assignee: @Hetgajjar1
 
 ### Issue: Phase 2 Epic — Frontend App (Electron)
 ```
+
 Title: [EPIC] Phase 2: Frontend App — Desktop Electron Interface
 
 Description:
@@ -469,6 +503,7 @@ This is the umbrella issue for Phase 2 (Frontend App). Build a desktop applicati
 **Priority:** 🟡 HIGH
 
 **Acceptance Criteria:**
+
 - [ ] Electron app runs on Windows/Mac/Linux
 - [ ] Project list loaded from Firestore
 - [ ] File upload working
@@ -477,11 +512,13 @@ This is the umbrella issue for Phase 2 (Frontend App). Build a desktop applicati
 - [ ] Responsive UI
 
 **Related:**
+
 - Product Roadmap: PRODUCT_ROADMAP.md
 - Phase 1 Epic: #7
 
 Labels: epic, phase-2, frontend, electron
 Assignee: @Hetgajjar1
+
 ```
 
 ---
@@ -490,6 +527,7 @@ Assignee: @Hetgajjar1
 
 ### Issue: Phase 3 Epic — MEP Calculation Engine
 ```
+
 Title: [EPIC] Phase 3: MEP Calculation Engine — Engineering Calculations
 
 Description:
@@ -501,6 +539,7 @@ This is the umbrella issue for Phase 3 (MEP Calculation Engine). Implement all M
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
+
 - [ ] Plumbing calculations accurate (±5%)
 - [ ] HVAC calculations accurate (±5%)
 - [ ] Electrical calculations accurate (±5%)
@@ -510,17 +549,20 @@ This is the umbrella issue for Phase 3 (MEP Calculation Engine). Implement all M
 - [ ] Calculation history tracked
 
 **Standards Used:**
+
 - IPC (International Plumbing Code)
 - NEC (National Electrical Code)
 - ASHRAE (Heating, Ventilation, Air Conditioning)
 - NFPA (Fire Protection)
 
 **Related:**
+
 - Product Roadmap: PRODUCT_ROADMAP.md
 - Phase 2 Epic: #17
 
 Labels: epic, phase-3, calculations, critical
 Assignee: @Hetgajjar1
+
 ```
 
 ---
@@ -529,6 +571,7 @@ Assignee: @Hetgajjar1
 
 ### Issue: Phase 4 Epic — Reports & Exports
 ```
+
 Title: [EPIC] Phase 4: Reports & Exports — Professional Deliverables
 
 Description:
@@ -540,6 +583,7 @@ This is the umbrella issue for Phase 4 (Reports & Exports). Generate professiona
 **Priority:** 🟡 HIGH
 
 **Acceptance Criteria:**
+
 - [ ] PDF reports generated successfully
 - [ ] Excel reports generated successfully
 - [ ] Reports include all calculation results
@@ -548,11 +592,13 @@ This is the umbrella issue for Phase 4 (Reports & Exports). Generate professiona
 - [ ] Compliance checks performed
 
 **Related:**
+
 - Product Roadmap: PRODUCT_ROADMAP.md
 - Phase 3 Epic: #23
 
 Labels: epic, phase-4, reports, exports
 Assignee: @Hetgajjar1
+
 ```
 
 ---
@@ -561,6 +607,7 @@ Assignee: @Hetgajjar1
 
 ### Issue: Phase 5 Epic — AI & Cloud Upgrade
 ```
+
 Title: [EPIC] Phase 5: AI & Cloud Upgrade — Intelligence & Collaboration
 
 Description:
@@ -572,17 +619,20 @@ This is the umbrella issue for Phase 5 (AI & Cloud Upgrade). Add AI capabilities
 **Priority:** 🟢 LOW (Future Enhancement)
 
 **Acceptance Criteria:**
+
 - [ ] AI detects MEP elements in drawings
 - [ ] Multi-user real-time editing works
 - [ ] Heavy computation moved to Cloud Run
 - [ ] Analytics dashboard functional
 
 **Related:**
+
 - Product Roadmap: PRODUCT_ROADMAP.md
 - Phase 4 Epic: #29
 
 Labels: epic, phase-5, ai, cloud, future
 Assignee: @Hetgajjar1
+
 ```
 
 ---
@@ -591,6 +641,7 @@ Assignee: @Hetgajjar1
 
 ### Issue: Phase 6 Epic — QA & Launch
 ```
+
 Title: [EPIC] Phase 6: QA & Launch — Testing & Release
 
 Description:
@@ -602,6 +653,7 @@ This is the umbrella issue for Phase 6 (QA & Launch). Complete testing and relea
 **Priority:** 🔴 CRITICAL
 
 **Acceptance Criteria:**
+
 - [ ] All tests pass
 - [ ] User testing completed
 - [ ] No critical bugs
@@ -610,12 +662,14 @@ This is the umbrella issue for Phase 6 (QA & Launch). Complete testing and relea
 - [ ] CI/CD pipeline working
 
 **Related:**
+
 - Product Roadmap: PRODUCT_ROADMAP.md
 - Phase 5 Epic: #35
 
 Labels: epic, phase-6, qa, launch, critical
 Assignee: @Hetgajjar1
-```
+
+````
 
 ---
 
@@ -631,7 +685,7 @@ Assignee: @Hetgajjar1
 ```bash
 # Use GitHub CLI to bulk create issues
 gh issue create --title "Issue Title" --body "Issue description" --label "label1,label2"
-```
+````
 
 **Option 3: CSV Import (if GitHub supports it in your workspace)**
 Export this as CSV and import to GitHub.
