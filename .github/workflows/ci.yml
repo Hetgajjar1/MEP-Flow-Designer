@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install root dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Install react-app dependencies
+        run: npm ci --prefix react-app --no-audit --no-fund
+
+      - name: Install functions dependencies
+        run: npm ci --prefix functions --no-audit --no-fund
+
+      - name: Lint functions
+        run: npm --prefix functions run lint
+
+      - name: Lint react-app
+        run: npm --prefix react-app run lint
+
+      - name: Build react-app
+        run: npm --prefix react-app run build
+
+      - name: Upload react-app build
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-build
+          path: react-app/dist

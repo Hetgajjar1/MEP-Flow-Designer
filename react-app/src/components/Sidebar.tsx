@@ -1,4 +1,4 @@
-import { Home, FolderKanban, Calculator, FileText, Settings, User } from 'lucide-react'
+import { Home, FolderKanban, Calculator, FileText, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Link, useLocation } from 'react-router-dom'
 

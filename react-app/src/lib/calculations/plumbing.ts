@@ -81,7 +81,7 @@ export function calculatePipeSize(
   const standardSizes = [0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12]
   
   // Check pressure loss and adjust if needed
-  const frictionLoss = calculateFrictionLoss(flowRate, diameter, length)
+  const frictionLoss = calculateFrictionLoss(flowRate, diameter)
   const pressureLoss = frictionLoss * length / 100
   
   // If pressure loss is too high, increase pipe size
@@ -108,8 +108,7 @@ export function calculatePipeSize(
  */
 export function calculateFrictionLoss(
   flowRate: number,
-  diameter: number,
-  length: number
+  diameter: number
 ): number {
   const C = 140 // Hazen-Williams coefficient for copper
   
